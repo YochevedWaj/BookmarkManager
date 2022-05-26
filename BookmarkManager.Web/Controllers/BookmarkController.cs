@@ -1,5 +1,6 @@
 ﻿using BookmarkManager.Data;
 using BookmarkManager.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -30,6 +31,7 @@ namespace BookmarkManager.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("getmybookmarks")]
         public List<Bookmark> GetMyBookmarks()
         {
@@ -40,6 +42,7 @@ namespace BookmarkManager.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [Route("addbookmark")]
         public void AddBookmark(Bookmark bookmark)
         {       
@@ -54,6 +57,7 @@ namespace BookmarkManager.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [Route("deletebookmark")]
         public void DeleteBookmark(Bookmark bookmark)
         {
@@ -66,6 +70,7 @@ namespace BookmarkManager.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [Route("editbookmark")]
         public void EditBookmark(Bookmark bookmark)
         {
