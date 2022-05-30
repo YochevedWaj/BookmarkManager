@@ -46,10 +46,6 @@ namespace BookmarkManager.Web.Controllers
         [Route("addbookmark")]
         public void AddBookmark(Bookmark bookmark)
         {       
-            if (!User.Identity.IsAuthenticated)
-            {
-                return;
-            }
             var repo = new BookmarkRepository(_connectionString);
             var accountRepo = new AccountRepository(_connectionString);
             bookmark.UserID = accountRepo.GetUserId(User.Identity.Name);
@@ -61,10 +57,6 @@ namespace BookmarkManager.Web.Controllers
         [Route("deletebookmark")]
         public void DeleteBookmark(Bookmark bookmark)
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return;
-            }
             var repo = new BookmarkRepository(_connectionString);
             repo.DeleteBookmark(bookmark);
         }
@@ -74,10 +66,6 @@ namespace BookmarkManager.Web.Controllers
         [Route("editbookmark")]
         public void EditBookmark(Bookmark bookmark)
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return;
-            }
             var repo = new BookmarkRepository(_connectionString);
             repo.EditBookmark(bookmark);
         }
